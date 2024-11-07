@@ -1,0 +1,51 @@
+﻿@model IEnumerable<k22cnt3_tdt_2210900134.Models.nguoi_dung>
+
+@{
+    ViewBag.Title = "Thêm người dùng ";
+}
+
+<h2>Thêm </h2>
+
+<p>
+    @Html.ActionLink("Thêm mới ", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ten_dang_nhap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mat_khau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.so_du)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ten_dang_nhap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mat_khau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.so_du)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ma_nguoi_dung }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ma_nguoi_dung }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ma_nguoi_dung }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

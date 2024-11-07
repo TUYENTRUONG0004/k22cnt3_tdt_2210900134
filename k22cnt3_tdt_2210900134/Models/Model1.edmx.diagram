@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d99e0dca1d424e3a8c37060294feecf6" Name="Diagram1">
+        <EntityTypeShape EntityType="k22cnt3_tdtModel.dich_vu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="k22cnt3_tdtModel.giao_dich" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="k22cnt3_tdtModel.nguoi_dung" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="k22cnt3_tdtModel.the_nap" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="k22cnt3_tdtModel.thong_bao" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="k22cnt3_tdtModel.FK__giao_dich__ma_di__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="k22cnt3_tdtModel.FK__giao_dich__ma_ng__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="k22cnt3_tdtModel.FK__giao_dich__ma_th__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="k22cnt3_tdtModel.FK__thong_bao__ma_ng__4AB81AF0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

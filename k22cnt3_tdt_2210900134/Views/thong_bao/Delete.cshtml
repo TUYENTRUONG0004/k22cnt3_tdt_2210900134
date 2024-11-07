@@ -1,0 +1,40 @@
+﻿@model k22cnt3_tdt_2210900134.Models.thong_bao
+
+@{
+    ViewBag.Title = "Xóa ";
+}
+
+<h2>Delete</h2>
+
+<h3>Xóa không ?</h3>
+<div>
+    <h4>thong_bao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.noi_dung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noi_dung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nguoi_dung.ten_dang_nhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nguoi_dung.ten_dang_nhap)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Quay về trang chủ", "Index")
+        </div>
+    }
+</div>

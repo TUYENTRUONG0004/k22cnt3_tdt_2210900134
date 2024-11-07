@@ -1,0 +1,51 @@
+﻿@model IEnumerable<k22cnt3_tdt_2210900134.Models.giao_dich>
+
+@{
+    ViewBag.Title = "Tạo giao dịch cho người dùng";
+}
+
+<h2>Thêm giao dịch cho người dùng</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.so_tien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dich_vu.ten_dich_vu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nguoi_dung.ten_dang_nhap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.the_nap.ten_the)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.so_tien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dich_vu.ten_dich_vu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nguoi_dung.ten_dang_nhap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.the_nap.ten_the)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ma_giao_dich }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ma_giao_dich }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ma_giao_dich }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

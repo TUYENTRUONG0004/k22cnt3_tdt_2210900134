@@ -1,0 +1,34 @@
+﻿@model k22cnt3_tdt_2210900134.Models.thong_bao
+
+@{
+    ViewBag.Title = "Chi tiết ";
+}
+
+<h2>Chi tiết </h2>
+
+<div>
+    <h4>thong_bao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.noi_dung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noi_dung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nguoi_dung.ten_dang_nhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nguoi_dung.ten_dang_nhap)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ma_thong_bao }) |
+    @Html.ActionLink("Quay về trang chủ", "Index")
+</p>

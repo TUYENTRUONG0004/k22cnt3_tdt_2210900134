@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="k22cnt3_tdtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dich_vu">
+          <Key>
+            <PropertyRef Name="ma_dich_vu" />
+          </Key>
+          <Property Name="ma_dich_vu" Type="int" Nullable="false" />
+          <Property Name="ten_dich_vu" Type="varchar" MaxLength="50" />
+          <Property Name="mo_ta" Type="text" />
+        </EntityType>
+        <EntityType Name="giao_dich">
+          <Key>
+            <PropertyRef Name="ma_giao_dich" />
+          </Key>
+          <Property Name="ma_giao_dich" Type="int" Nullable="false" />
+          <Property Name="ma_nguoi_dung" Type="int" />
+          <Property Name="ma_the" Type="int" />
+          <Property Name="ma_dich_vu" Type="int" />
+          <Property Name="so_tien" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="nguoi_dung">
+          <Key>
+            <PropertyRef Name="ma_nguoi_dung" />
+          </Key>
+          <Property Name="ma_nguoi_dung" Type="int" Nullable="false" />
+          <Property Name="ten_dang_nhap" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="mat_khau" Type="varchar" MaxLength="255" />
+          <Property Name="so_du" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="the_nap">
+          <Key>
+            <PropertyRef Name="ma_the" />
+          </Key>
+          <Property Name="ma_the" Type="int" Nullable="false" />
+          <Property Name="ten_the" Type="varchar" MaxLength="50" />
+          <Property Name="gia_tri" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="so_luong" Type="int" />
+        </EntityType>
+        <EntityType Name="thong_bao">
+          <Key>
+            <PropertyRef Name="ma_thong_bao" />
+          </Key>
+          <Property Name="ma_thong_bao" Type="int" Nullable="false" />
+          <Property Name="ma_nguoi_dung" Type="int" />
+          <Property Name="noi_dung" Type="text" />
+        </EntityType>
+        <Association Name="FK__giao_dich__ma_di__4F7CD00D">
+          <End Role="dich_vu" Type="Self.dich_vu" Multiplicity="0..1" />
+          <End Role="giao_dich" Type="Self.giao_dich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dich_vu">
+              <PropertyRef Name="ma_dich_vu" />
+            </Principal>
+            <Dependent Role="giao_dich">
+              <PropertyRef Name="ma_dich_vu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__giao_dich__ma_ng__4D94879B">
+          <End Role="nguoi_dung" Type="Self.nguoi_dung" Multiplicity="0..1" />
+          <End Role="giao_dich" Type="Self.giao_dich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nguoi_dung">
+              <PropertyRef Name="ma_nguoi_dung" />
+            </Principal>
+            <Dependent Role="giao_dich">
+              <PropertyRef Name="ma_nguoi_dung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__giao_dich__ma_th__4E88ABD4">
+          <End Role="the_nap" Type="Self.the_nap" Multiplicity="0..1" />
+          <End Role="giao_dich" Type="Self.giao_dich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="the_nap">
+              <PropertyRef Name="ma_the" />
+            </Principal>
+            <Dependent Role="giao_dich">
+              <PropertyRef Name="ma_the" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__thong_bao__ma_ng__4AB81AF0">
+          <End Role="nguoi_dung" Type="Self.nguoi_dung" Multiplicity="0..1" />
+          <End Role="thong_bao" Type="Self.thong_bao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nguoi_dung">
+              <PropertyRef Name="ma_nguoi_dung" />
+            </Principal>
+            <Dependent Role="thong_bao">
+              <PropertyRef Name="ma_nguoi_dung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="k22cnt3_tdtModelStoreContainer">
+          <EntitySet Name="dich_vu" EntityType="Self.dich_vu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="giao_dich" EntityType="Self.giao_dich" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nguoi_dung" EntityType="Self.nguoi_dung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="the_nap" EntityType="Self.the_nap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="thong_bao" EntityType="Self.thong_bao" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__giao_dich__ma_di__4F7CD00D" Association="Self.FK__giao_dich__ma_di__4F7CD00D">
+            <End Role="dich_vu" EntitySet="dich_vu" />
+            <End Role="giao_dich" EntitySet="giao_dich" />
+          </AssociationSet>
+          <AssociationSet Name="FK__giao_dich__ma_ng__4D94879B" Association="Self.FK__giao_dich__ma_ng__4D94879B">
+            <End Role="nguoi_dung" EntitySet="nguoi_dung" />
+            <End Role="giao_dich" EntitySet="giao_dich" />
+          </AssociationSet>
+          <AssociationSet Name="FK__giao_dich__ma_th__4E88ABD4" Association="Self.FK__giao_dich__ma_th__4E88ABD4">
+            <End Role="the_nap" EntitySet="the_nap" />
+            <End Role="giao_dich" EntitySet="giao_dich" />
+          </AssociationSet>
+          <AssociationSet Name="FK__thong_bao__ma_ng__4AB81AF0" Association="Self.FK__thong_bao__ma_ng__4AB81AF0">
+            <End Role="nguoi_dung" EntitySet="nguoi_dung" />
+            <End Role="thong_bao" EntitySet="thong_bao" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="k22cnt3_tdtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="dich_vu">
+          <Key>
+            <PropertyRef Name="ma_dich_vu" />
+          </Key>
+          <Property Name="ma_dich_vu" Type="Int32" Nullable="false" />
+          <Property Name="ten_dich_vu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mo_ta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="giao_dich" Relationship="Self.FK__giao_dich__ma_di__4F7CD00D" FromRole="dich_vu" ToRole="giao_dich" />
+        </EntityType>
+        <EntityType Name="giao_dich">
+          <Key>
+            <PropertyRef Name="ma_giao_dich" />
+          </Key>
+          <Property Name="ma_giao_dich" Type="Int32" Nullable="false" />
+          <Property Name="ma_nguoi_dung" Type="Int32" />
+          <Property Name="ma_the" Type="Int32" />
+          <Property Name="ma_dich_vu" Type="Int32" />
+          <Property Name="so_tien" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="dich_vu" Relationship="Self.FK__giao_dich__ma_di__4F7CD00D" FromRole="giao_dich" ToRole="dich_vu" />
+          <NavigationProperty Name="nguoi_dung" Relationship="Self.FK__giao_dich__ma_ng__4D94879B" FromRole="giao_dich" ToRole="nguoi_dung" />
+          <NavigationProperty Name="the_nap" Relationship="Self.FK__giao_dich__ma_th__4E88ABD4" FromRole="giao_dich" ToRole="the_nap" />
+        </EntityType>
+        <EntityType Name="nguoi_dung">
+          <Key>
+            <PropertyRef Name="ma_nguoi_dung" />
+          </Key>
+          <Property Name="ma_nguoi_dung" Type="Int32" Nullable="false" />
+          <Property Name="ten_dang_nhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mat_khau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="so_du" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="giao_dich" Relationship="Self.FK__giao_dich__ma_ng__4D94879B" FromRole="nguoi_dung" ToRole="giao_dich" />
+          <NavigationProperty Name="thong_bao" Relationship="Self.FK__thong_bao__ma_ng__4AB81AF0" FromRole="nguoi_dung" ToRole="thong_bao" />
+        </EntityType>
+        <EntityType Name="the_nap">
+          <Key>
+            <PropertyRef Name="ma_the" />
+          </Key>
+          <Property Name="ma_the" Type="Int32" Nullable="false" />
+          <Property Name="ten_the" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gia_tri" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="so_luong" Type="Int32" />
+          <NavigationProperty Name="giao_dich" Relationship="Self.FK__giao_dich__ma_th__4E88ABD4" FromRole="the_nap" ToRole="giao_dich" />
+        </EntityType>
+        <EntityType Name="thong_bao">
+          <Key>
+            <PropertyRef Name="ma_thong_bao" />
+          </Key>
+          <Property Name="ma_thong_bao" Type="Int32" Nullable="false" />
+          <Property Name="ma_nguoi_dung" Type="Int32" />
+          <Property Name="noi_dung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="nguoi_dung" Relationship="Self.FK__thong_bao__ma_ng__4AB81AF0" FromRole="thong_bao" ToRole="nguoi_dung" />
+        </EntityType>
+        <Association Name="FK__giao_dich__ma_di__4F7CD00D">
+          <End Role="dich_vu" Type="Self.dich_vu" Multiplicity="0..1" />
+          <End Role="giao_dich" Type="Self.giao_dich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dich_vu">
+              <PropertyRef Name="ma_dich_vu" />
+            </Principal>
+            <Dependent Role="giao_dich">
+              <PropertyRef Name="ma_dich_vu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__giao_dich__ma_ng__4D94879B">
+          <End Role="nguoi_dung" Type="Self.nguoi_dung" Multiplicity="0..1" />
+          <End Role="giao_dich" Type="Self.giao_dich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nguoi_dung">
+              <PropertyRef Name="ma_nguoi_dung" />
+            </Principal>
+            <Dependent Role="giao_dich">
+              <PropertyRef Name="ma_nguoi_dung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__giao_dich__ma_th__4E88ABD4">
+          <End Role="the_nap" Type="Self.the_nap" Multiplicity="0..1" />
+          <End Role="giao_dich" Type="Self.giao_dich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="the_nap">
+              <PropertyRef Name="ma_the" />
+            </Principal>
+            <Dependent Role="giao_dich">
+              <PropertyRef Name="ma_the" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__thong_bao__ma_ng__4AB81AF0">
+          <End Role="nguoi_dung" Type="Self.nguoi_dung" Multiplicity="0..1" />
+          <End Role="thong_bao" Type="Self.thong_bao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nguoi_dung">
+              <PropertyRef Name="ma_nguoi_dung" />
+            </Principal>
+            <Dependent Role="thong_bao">
+              <PropertyRef Name="ma_nguoi_dung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="k22cnt3_tdtEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dich_vu" EntityType="Self.dich_vu" />
+          <EntitySet Name="giao_dich" EntityType="Self.giao_dich" />
+          <EntitySet Name="nguoi_dung" EntityType="Self.nguoi_dung" />
+          <EntitySet Name="the_nap" EntityType="Self.the_nap" />
+          <EntitySet Name="thong_bao" EntityType="Self.thong_bao" />
+          <AssociationSet Name="FK__giao_dich__ma_di__4F7CD00D" Association="Self.FK__giao_dich__ma_di__4F7CD00D">
+            <End Role="dich_vu" EntitySet="dich_vu" />
+            <End Role="giao_dich" EntitySet="giao_dich" />
+          </AssociationSet>
+          <AssociationSet Name="FK__giao_dich__ma_ng__4D94879B" Association="Self.FK__giao_dich__ma_ng__4D94879B">
+            <End Role="nguoi_dung" EntitySet="nguoi_dung" />
+            <End Role="giao_dich" EntitySet="giao_dich" />
+          </AssociationSet>
+          <AssociationSet Name="FK__giao_dich__ma_th__4E88ABD4" Association="Self.FK__giao_dich__ma_th__4E88ABD4">
+            <End Role="the_nap" EntitySet="the_nap" />
+            <End Role="giao_dich" EntitySet="giao_dich" />
+          </AssociationSet>
+          <AssociationSet Name="FK__thong_bao__ma_ng__4AB81AF0" Association="Self.FK__thong_bao__ma_ng__4AB81AF0">
+            <End Role="nguoi_dung" EntitySet="nguoi_dung" />
+            <End Role="thong_bao" EntitySet="thong_bao" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="k22cnt3_tdtModelStoreContainer" CdmEntityContainer="k22cnt3_tdtEntities">
+          <EntitySetMapping Name="dich_vu">
+            <EntityTypeMapping TypeName="k22cnt3_tdtModel.dich_vu">
+              <MappingFragment StoreEntitySet="dich_vu">
+                <ScalarProperty Name="ma_dich_vu" ColumnName="ma_dich_vu" />
+                <ScalarProperty Name="ten_dich_vu" ColumnName="ten_dich_vu" />
+                <ScalarProperty Name="mo_ta" ColumnName="mo_ta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="giao_dich">
+            <EntityTypeMapping TypeName="k22cnt3_tdtModel.giao_dich">
+              <MappingFragment StoreEntitySet="giao_dich">
+                <ScalarProperty Name="ma_giao_dich" ColumnName="ma_giao_dich" />
+                <ScalarProperty Name="ma_nguoi_dung" ColumnName="ma_nguoi_dung" />
+                <ScalarProperty Name="ma_the" ColumnName="ma_the" />
+                <ScalarProperty Name="ma_dich_vu" ColumnName="ma_dich_vu" />
+                <ScalarProperty Name="so_tien" ColumnName="so_tien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nguoi_dung">
+            <EntityTypeMapping TypeName="k22cnt3_tdtModel.nguoi_dung">
+              <MappingFragment StoreEntitySet="nguoi_dung">
+                <ScalarProperty Name="ma_nguoi_dung" ColumnName="ma_nguoi_dung" />
+                <ScalarProperty Name="ten_dang_nhap" ColumnName="ten_dang_nhap" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mat_khau" ColumnName="mat_khau" />
+                <ScalarProperty Name="so_du" ColumnName="so_du" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="the_nap">
+            <EntityTypeMapping TypeName="k22cnt3_tdtModel.the_nap">
+              <MappingFragment StoreEntitySet="the_nap">
+                <ScalarProperty Name="ma_the" ColumnName="ma_the" />
+                <ScalarProperty Name="ten_the" ColumnName="ten_the" />
+                <ScalarProperty Name="gia_tri" ColumnName="gia_tri" />
+                <ScalarProperty Name="so_luong" ColumnName="so_luong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="thong_bao">
+            <EntityTypeMapping TypeName="k22cnt3_tdtModel.thong_bao">
+              <MappingFragment StoreEntitySet="thong_bao">
+                <ScalarProperty Name="ma_thong_bao" ColumnName="ma_thong_bao" />
+                <ScalarProperty Name="ma_nguoi_dung" ColumnName="ma_nguoi_dung" />
+                <ScalarProperty Name="noi_dung" ColumnName="noi_dung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

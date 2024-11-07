@@ -1,0 +1,49 @@
+﻿@model k22cnt3_tdt_2210900134.Models.giao_dich
+
+@{
+    ViewBag.Title = "Xóa giao dịch";
+}
+
+<h2>Xóa giao dịch</h2>
+<h3>Bạn có chắc chắn muốn xóa không?</h3> 
+    <h4>Thông tin giao dịch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.so_tien)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.so_tien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dich_vu.ten_dich_vu)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.dich_vu.ten_dich_vu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nguoi_dung.ten_dang_nhap)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.nguoi_dung.ten_dang_nhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.the_nap.ten_the)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.the_nap.ten_the)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary" }) 
+        </div>
+    }

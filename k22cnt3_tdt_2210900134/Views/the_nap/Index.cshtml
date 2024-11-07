@@ -1,0 +1,45 @@
+﻿@model IEnumerable<k22cnt3_tdt_2210900134.Models.the_nap>
+
+@{
+    ViewBag.Title = "Thẻ cần nạp";
+}
+
+<h2>Thẻ </h2>
+
+<p>
+    @Html.ActionLink("Thêm ", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ten_the)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gia_tri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.so_luong)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ten_the)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gia_tri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.so_luong)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ma_the }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ma_the }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ma_the }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

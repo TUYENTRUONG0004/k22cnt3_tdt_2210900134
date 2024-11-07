@@ -1,0 +1,77 @@
+﻿@model k22cnt3_tdt_2210900134.Models.nguoi_dung
+
+@{
+    ViewBag.Title = "Thêm người dùng";
+}
+
+<h2>Thêm người dùng</h2>
+
+@using (Html.BeginForm("Create", "NguoiDung", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>nguoi_dung</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ma_nguoi_dung, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ma_nguoi_dung, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mã người dùng" } })
+                @Html.ValidationMessageFor(model => model.ma_nguoi_dung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ten_dang_nhap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ten_dang_nhap, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên đăng nhập" } })
+                @Html.ValidationMessageFor(model => model.ten_dang_nhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập email" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mat_khau, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mat_khau, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Nhập mật khẩu" } })
+                @Html.ValidationMessageFor(model => model.mat_khau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.so_du, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.so_du, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập số dư", @type = "number", @min = "0" } })
+                @Html.ValidationMessageFor(model => model.so_du, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo mới" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

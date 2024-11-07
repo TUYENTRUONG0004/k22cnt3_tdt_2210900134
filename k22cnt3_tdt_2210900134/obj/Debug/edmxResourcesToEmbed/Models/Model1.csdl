@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="k22cnt3_tdtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="dich_vu">
+    <Key>
+      <PropertyRef Name="ma_dich_vu" />
+    </Key>
+    <Property Name="ma_dich_vu" Type="Int32" Nullable="false" />
+    <Property Name="ten_dich_vu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mo_ta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="giao_dich" Relationship="Self.FK__giao_dich__ma_di__4F7CD00D" FromRole="dich_vu" ToRole="giao_dich" />
+  </EntityType>
+  <EntityType Name="giao_dich">
+    <Key>
+      <PropertyRef Name="ma_giao_dich" />
+    </Key>
+    <Property Name="ma_giao_dich" Type="Int32" Nullable="false" />
+    <Property Name="ma_nguoi_dung" Type="Int32" />
+    <Property Name="ma_the" Type="Int32" />
+    <Property Name="ma_dich_vu" Type="Int32" />
+    <Property Name="so_tien" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="dich_vu" Relationship="Self.FK__giao_dich__ma_di__4F7CD00D" FromRole="giao_dich" ToRole="dich_vu" />
+    <NavigationProperty Name="nguoi_dung" Relationship="Self.FK__giao_dich__ma_ng__4D94879B" FromRole="giao_dich" ToRole="nguoi_dung" />
+    <NavigationProperty Name="the_nap" Relationship="Self.FK__giao_dich__ma_th__4E88ABD4" FromRole="giao_dich" ToRole="the_nap" />
+  </EntityType>
+  <EntityType Name="nguoi_dung">
+    <Key>
+      <PropertyRef Name="ma_nguoi_dung" />
+    </Key>
+    <Property Name="ma_nguoi_dung" Type="Int32" Nullable="false" />
+    <Property Name="ten_dang_nhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="mat_khau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="so_du" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="giao_dich" Relationship="Self.FK__giao_dich__ma_ng__4D94879B" FromRole="nguoi_dung" ToRole="giao_dich" />
+    <NavigationProperty Name="thong_bao" Relationship="Self.FK__thong_bao__ma_ng__4AB81AF0" FromRole="nguoi_dung" ToRole="thong_bao" />
+  </EntityType>
+  <EntityType Name="the_nap">
+    <Key>
+      <PropertyRef Name="ma_the" />
+    </Key>
+    <Property Name="ma_the" Type="Int32" Nullable="false" />
+    <Property Name="ten_the" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="gia_tri" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="so_luong" Type="Int32" />
+    <NavigationProperty Name="giao_dich" Relationship="Self.FK__giao_dich__ma_th__4E88ABD4" FromRole="the_nap" ToRole="giao_dich" />
+  </EntityType>
+  <EntityType Name="thong_bao">
+    <Key>
+      <PropertyRef Name="ma_thong_bao" />
+    </Key>
+    <Property Name="ma_thong_bao" Type="Int32" Nullable="false" />
+    <Property Name="ma_nguoi_dung" Type="Int32" />
+    <Property Name="noi_dung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="nguoi_dung" Relationship="Self.FK__thong_bao__ma_ng__4AB81AF0" FromRole="thong_bao" ToRole="nguoi_dung" />
+  </EntityType>
+  <Association Name="FK__giao_dich__ma_di__4F7CD00D">
+    <End Role="dich_vu" Type="Self.dich_vu" Multiplicity="0..1" />
+    <End Role="giao_dich" Type="Self.giao_dich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dich_vu">
+        <PropertyRef Name="ma_dich_vu" />
+      </Principal>
+      <Dependent Role="giao_dich">
+        <PropertyRef Name="ma_dich_vu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giao_dich__ma_ng__4D94879B">
+    <End Role="nguoi_dung" Type="Self.nguoi_dung" Multiplicity="0..1" />
+    <End Role="giao_dich" Type="Self.giao_dich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nguoi_dung">
+        <PropertyRef Name="ma_nguoi_dung" />
+      </Principal>
+      <Dependent Role="giao_dich">
+        <PropertyRef Name="ma_nguoi_dung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giao_dich__ma_th__4E88ABD4">
+    <End Role="the_nap" Type="Self.the_nap" Multiplicity="0..1" />
+    <End Role="giao_dich" Type="Self.giao_dich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="the_nap">
+        <PropertyRef Name="ma_the" />
+      </Principal>
+      <Dependent Role="giao_dich">
+        <PropertyRef Name="ma_the" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__thong_bao__ma_ng__4AB81AF0">
+    <End Role="nguoi_dung" Type="Self.nguoi_dung" Multiplicity="0..1" />
+    <End Role="thong_bao" Type="Self.thong_bao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nguoi_dung">
+        <PropertyRef Name="ma_nguoi_dung" />
+      </Principal>
+      <Dependent Role="thong_bao">
+        <PropertyRef Name="ma_nguoi_dung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="k22cnt3_tdtEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="dich_vu" EntityType="Self.dich_vu" />
+    <EntitySet Name="giao_dich" EntityType="Self.giao_dich" />
+    <EntitySet Name="nguoi_dung" EntityType="Self.nguoi_dung" />
+    <EntitySet Name="the_nap" EntityType="Self.the_nap" />
+    <EntitySet Name="thong_bao" EntityType="Self.thong_bao" />
+    <AssociationSet Name="FK__giao_dich__ma_di__4F7CD00D" Association="Self.FK__giao_dich__ma_di__4F7CD00D">
+      <End Role="dich_vu" EntitySet="dich_vu" />
+      <End Role="giao_dich" EntitySet="giao_dich" />
+    </AssociationSet>
+    <AssociationSet Name="FK__giao_dich__ma_ng__4D94879B" Association="Self.FK__giao_dich__ma_ng__4D94879B">
+      <End Role="nguoi_dung" EntitySet="nguoi_dung" />
+      <End Role="giao_dich" EntitySet="giao_dich" />
+    </AssociationSet>
+    <AssociationSet Name="FK__giao_dich__ma_th__4E88ABD4" Association="Self.FK__giao_dich__ma_th__4E88ABD4">
+      <End Role="the_nap" EntitySet="the_nap" />
+      <End Role="giao_dich" EntitySet="giao_dich" />
+    </AssociationSet>
+    <AssociationSet Name="FK__thong_bao__ma_ng__4AB81AF0" Association="Self.FK__thong_bao__ma_ng__4AB81AF0">
+      <End Role="nguoi_dung" EntitySet="nguoi_dung" />
+      <End Role="thong_bao" EntitySet="thong_bao" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

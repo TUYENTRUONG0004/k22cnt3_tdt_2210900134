@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="k22cnt3_tdtModelStoreContainer" CdmEntityContainer="k22cnt3_tdtEntities">
+    <EntitySetMapping Name="dich_vu">
+      <EntityTypeMapping TypeName="k22cnt3_tdtModel.dich_vu">
+        <MappingFragment StoreEntitySet="dich_vu">
+          <ScalarProperty Name="ma_dich_vu" ColumnName="ma_dich_vu" />
+          <ScalarProperty Name="ten_dich_vu" ColumnName="ten_dich_vu" />
+          <ScalarProperty Name="mo_ta" ColumnName="mo_ta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="giao_dich">
+      <EntityTypeMapping TypeName="k22cnt3_tdtModel.giao_dich">
+        <MappingFragment StoreEntitySet="giao_dich">
+          <ScalarProperty Name="ma_giao_dich" ColumnName="ma_giao_dich" />
+          <ScalarProperty Name="ma_nguoi_dung" ColumnName="ma_nguoi_dung" />
+          <ScalarProperty Name="ma_the" ColumnName="ma_the" />
+          <ScalarProperty Name="ma_dich_vu" ColumnName="ma_dich_vu" />
+          <ScalarProperty Name="so_tien" ColumnName="so_tien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nguoi_dung">
+      <EntityTypeMapping TypeName="k22cnt3_tdtModel.nguoi_dung">
+        <MappingFragment StoreEntitySet="nguoi_dung">
+          <ScalarProperty Name="ma_nguoi_dung" ColumnName="ma_nguoi_dung" />
+          <ScalarProperty Name="ten_dang_nhap" ColumnName="ten_dang_nhap" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mat_khau" ColumnName="mat_khau" />
+          <ScalarProperty Name="so_du" ColumnName="so_du" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="the_nap">
+      <EntityTypeMapping TypeName="k22cnt3_tdtModel.the_nap">
+        <MappingFragment StoreEntitySet="the_nap">
+          <ScalarProperty Name="ma_the" ColumnName="ma_the" />
+          <ScalarProperty Name="ten_the" ColumnName="ten_the" />
+          <ScalarProperty Name="gia_tri" ColumnName="gia_tri" />
+          <ScalarProperty Name="so_luong" ColumnName="so_luong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="thong_bao">
+      <EntityTypeMapping TypeName="k22cnt3_tdtModel.thong_bao">
+        <MappingFragment StoreEntitySet="thong_bao">
+          <ScalarProperty Name="ma_thong_bao" ColumnName="ma_thong_bao" />
+          <ScalarProperty Name="ma_nguoi_dung" ColumnName="ma_nguoi_dung" />
+          <ScalarProperty Name="noi_dung" ColumnName="noi_dung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,65 @@
+﻿@model k22cnt3_tdt_2210900134.Models.giao_dich
+
+@{
+    ViewBag.Title = "Chỉnh sửa giao dịch"; // Page title in Vietnamese
+}
+
+<h2>Chỉnh sửa giao dịch</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thông tin giao dịch</h4> 
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ma_giao_dich)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ma_nguoi_dung, "Người dùng", htmlAttributes: new { @class = "control-label col-md-2" }) 
+            <div class="col-md-10">
+                @Html.DropDownList("ma_nguoi_dung", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ma_nguoi_dung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ma_the, "Thẻ nạp", htmlAttributes: new { @class = "control-label col-md-2" }) 
+            <div class="col-md-10">
+                @Html.DropDownList("ma_the", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ma_the, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ma_dich_vu, "Dịch vụ", htmlAttributes: new { @class = "control-label col-md-2" }) 
+            <div class="col-md-10">
+                @Html.DropDownList("ma_dich_vu", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ma_dich_vu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.so_tien, "Số tiền", htmlAttributes: new { @class = "control-label col-md-2" }) 
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.so_tien, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.so_tien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" /> 
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval") 
+}

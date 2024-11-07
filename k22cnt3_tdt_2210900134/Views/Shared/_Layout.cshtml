@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <title>@ViewBag.Title -Trang Admin nạp </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            height: 100%;
+        }
+
+            .sidebar a {
+                color: white;
+                text-decoration: none;
+                display: block;
+                padding: 10px 0;
+            }
+
+                .sidebar a:hover {
+                    background-color: #495057;
+                }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Trang admin </h2>
+        <ul class="navbar-nav">
+            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+            <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+            <li>@Html.ActionLink("Nguời dùng", "Index", "nguoi_dung", new { area = "" }, new { @class = "nav-link" })</li>
+            <li>@Html.ActionLink("Dịch vụ", "Index", "dich_vu", new { area = "" }, new { @class = "nav-link" })</li>
+            <li>@Html.ActionLink("Thẻ", "Index", "the_nap", new { area = "" }, new { @class = "nav-link" })</li>
+            <li>@Html.ActionLink("Giao dịch", "Index", "giao_dich", new { area = "" }, new { @class = "nav-link" })</li>
+            <li>@Html.ActionLink("Thông báo", "Index", "thong_bao", new { area = "" }, new { @class = "nav-link" })</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <header>
+            <h1>@ViewBag.Title</h1>
+        </header>
+
+        <div class="body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - loc4571@gmail.com</p>
+            </footer>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
